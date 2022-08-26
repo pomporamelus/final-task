@@ -17,7 +17,7 @@ export class AuthService {
     private jwtService: JwtService,
   ) {}
   async login(dto: loginUserDto) {
-    const user = await this.userService.getUserByPhone(dto.phone);
+    const user = await this.userService.getUser({name: dto.phone});
     const passwordEqual = await bcrypt.compare(dto.password, user.password);
     if (user && passwordEqual) {
       console.log(user);
@@ -30,7 +30,7 @@ export class AuthService {
   }
 
   async registration(dto: createUserDto) {
-    const candidate = await this.userService.getUserByPhone(dto.phone);
+    const candidate = await this.userService.getUser({name: dto.phone});
     if (candidate) {
       throw new HttpException(
         'user with such phone already exist',

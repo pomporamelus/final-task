@@ -8,13 +8,13 @@ export class AuthController {
   constructor(private service: AuthService) {}
   @ApiOperation({ summary: 'to enter in your account' })
   @Post('/login')
-  login(@Body() dto: loginUserDto) {
-    return this.service.login(dto);
+  async login(@Body() dto: loginUserDto) {
+    return await this.service.login(dto);
   }
 
   @ApiOperation({ summary: 'to register your account' })
   @Post('/registration')
-  regist(@Body() dto: createUserDto) {
-    return this.service.registration(dto);
+  async regist(@Body() dto: createUserDto) {
+    return await this.service.registration(dto);
   }
 }

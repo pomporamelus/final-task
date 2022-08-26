@@ -17,11 +17,12 @@ export class UserService {
   async getAllUsers() {
     return await this.userRepository.find();
   }
-  async getUserByPhone(phone: string) {
-    const user = await this.userRepository.findOne({ where: { phone } });
-    console.log(user)
+  async getUser(option) {
+    const user = await this.userRepository.findOne({
+      where: option
+  })
     if(!user) {
-      throw new HttpException('user with such phone not found', HttpStatus.NOT_FOUND)
+      throw new HttpException('user with  not found', HttpStatus.NOT_FOUND)
     }
     return user;
   }
