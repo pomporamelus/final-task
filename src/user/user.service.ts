@@ -19,6 +19,9 @@ export class UserService {
   }
   async getUserByPhone(phone: string) {
     const user = await this.userRepository.findOne({ where: { phone } });
+    if(!user) {
+      throw new HttpException('user with such phone not found', HttpStatus.NOT_FOUND)
+    }
     return user;
   }
 
