@@ -7,7 +7,6 @@ import { AuthService } from './auth.service';
 export class AuthController {
   constructor(private service: AuthService) {}
   @ApiOperation({ summary: 'to enter in your account' })
-  @ApiBearerAuth()
   @Post('/login')
   login(@Body() dto: loginUserDto) {
     return this.service.login(dto);

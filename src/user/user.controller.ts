@@ -1,5 +1,5 @@
 import { Controller, Delete, Get, Param, UseGuards } from '@nestjs/common';
-import { ApiOperation, ApiTags } from '@nestjs/swagger';
+import { ApiBearerAuth, ApiOperation, ApiTags } from '@nestjs/swagger';
 import { JwtAuthGuard } from 'src/auth/jwt-auth.guard';
 import { RoleGuard } from 'src/auth/role.guard';
 import { Roles } from 'src/auth/roles.auth.decorator';
@@ -10,6 +10,7 @@ import { UserService } from './user.service';
 export class UserController {
   constructor(private userService: UserService) {}
   @ApiOperation({ summary: 'to get all users (only owner)' })
+  @ApiBearerAuth()
   @Roles('owner')
   @UseGuards(RoleGuard)
   @Get()
