@@ -14,4 +14,7 @@ export const DB_CONFIG: TypeOrmModuleOptions = {
   entities: [UserEntity, CottageEntity, OrderEntity],
   autoLoadEntities: true,
   synchronize: true,
+  ssl: {
+    rejectUnauthorized: false,
+  },
 };
