@@ -1,5 +1,6 @@
 import { ApiProperty } from '@nestjs/swagger';
 import { IsNumberString, Length } from 'class-validator';
+import { Role } from '../enum';
 
 export class createUserDto {
   @ApiProperty({ example: 'islam' })
@@ -14,4 +15,8 @@ export class createUserDto {
   @ApiProperty({ example: '12345' })
   @Length(4, 16, { message: 'no less 4 and no more 16 letters ' })
   password: string;
+
+  @ApiProperty({ example: '12345' })
+  role: Role
+
 }

@@ -18,13 +18,19 @@ export class AuthService {
   ) {}
   async login(dto: loginUserDto) {
     const user = await this.userService.getUser({phone: dto.phone});
+    if(!user) {
+      throw new HttpException(
+        'phone is incorrect',
+        HttpStatus.BAD_REQUEST,
+      );
+    }
     const passwordEqual = await bcrypt.compare(dto.password, user.password);
-    if (user && passwordEqual) {
+    if (passwordEqual) {
       console.log(user);
       return this.generateToken(user);
     }
     throw new HttpException(
-      'user did not registed or password is incorrect',
+      'password is incorrect',
       HttpStatus.BAD_REQUEST,
     );
   }
