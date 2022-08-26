@@ -17,12 +17,12 @@ export class UserService {
   async getAllUsers() {
     return await this.userRepository.find();
   }
-  async getUser(option) {
+  async getUser(options) {
     const user = await this.userRepository.findOne({
-      where: option
+      where: options
   })
     if(!user) {
-      throw new HttpException('user with  not found', HttpStatus.NOT_FOUND)
+      throw new HttpException('user   not found', HttpStatus.NOT_FOUND)
     }
     return user;
   }
