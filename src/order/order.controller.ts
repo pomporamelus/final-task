@@ -1,11 +1,12 @@
 import { Body, Controller, Get, Post, UseGuards } from '@nestjs/common';
-import { ApiOperation, ApiTags } from '@nestjs/swagger';
+import { ApiBearerAuth, ApiOperation, ApiTags } from '@nestjs/swagger';
 import { RoleGuard } from 'src/auth/role.guard';
 import { Roles } from 'src/auth/roles.auth.decorator';
 import { createOrderDto } from './dto';
 import { OrderService } from './order.service';
 
 @ApiTags('Order')
+@ApiBearerAuth()
 @Controller('order')
 export class OrderController {
   constructor(private orderService: OrderService) {}

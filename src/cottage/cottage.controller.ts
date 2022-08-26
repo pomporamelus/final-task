@@ -8,7 +8,7 @@ import {
   Put,
   UseGuards,
 } from '@nestjs/common';
-import { ApiOperation, ApiTags } from '@nestjs/swagger';
+import { ApiBearerAuth, ApiOperation, ApiTags } from '@nestjs/swagger';
 import { JwtAuthGuard } from 'src/auth/jwt-auth.guard';
 import { RoleGuard } from 'src/auth/role.guard';
 import { Roles } from 'src/auth/roles.auth.decorator';
@@ -16,6 +16,7 @@ import { CottageService } from './cottage.service';
 import { createCottageDto, editCottageDto } from './dto';
 
 @ApiTags('Cottage')
+@ApiBearerAuth()
 @Controller('cottage')
 export class CottageController {
   constructor(private cottageService: CottageService) {}

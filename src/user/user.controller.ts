@@ -4,13 +4,12 @@ import { JwtAuthGuard } from 'src/auth/jwt-auth.guard';
 import { RoleGuard } from 'src/auth/role.guard';
 import { Roles } from 'src/auth/roles.auth.decorator';
 import { UserService } from './user.service';
-
+@ApiBearerAuth()
 @ApiTags('Users')
 @Controller('user')
 export class UserController {
   constructor(private userService: UserService) {}
   @ApiOperation({ summary: 'to get all users (only owner)' })
-  @ApiBearerAuth()
   @Roles('owner')
   @UseGuards(RoleGuard)
   @Get()
