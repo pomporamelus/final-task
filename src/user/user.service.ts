@@ -25,7 +25,7 @@ export class UserService {
   }
 
   async delete(id) {
-    const exist = await this.userRepository.findOneBy({ id });
+    const exist = await this.userRepository.findOneBy({ id:id });
     if (!exist) {
       throw new HttpException(
         'user with such id not found',

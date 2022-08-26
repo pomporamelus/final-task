@@ -50,7 +50,7 @@ export class CottageService {
   }
 
   async deleteOne(id: number) {
-    const cottage = await this.findOne({ id });
+    const cottage = await this.findOne({ id:id });
     if (!cottage) {
       throw new HttpException(
         'Машина с таким id не найдена',
