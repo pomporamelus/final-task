@@ -30,7 +30,7 @@ export class AuthService {
   }
 
   async registration(dto: createUserDto) {
-    const candidate = await this.userService.getUser({where: dto.phone});
+    const candidate = await this.userService.getUser({phone : dto.phone});
     if (candidate) {
       throw new HttpException(
         'user with such phone already exist',
