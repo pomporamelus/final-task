@@ -30,7 +30,7 @@ export class CottageController {
   @UseGuards(JwtAuthGuard)
   @Get(':id')
   async findOne(@Param('id') id: number) {
-    return await this.cottageService.findOne({ id });
+    return await this.cottageService.findOne({ id: id });
   }
   @ApiOperation({ summary: 'to create a cottage (only owner)' })
   @Roles('owner')
