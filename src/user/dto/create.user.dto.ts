@@ -15,6 +15,4 @@ export class createUserDto {
   @ApiProperty({ example: '12345' })
   @Length(4, 16, { message: 'no less 4 and no more 16 letters ' })
   password: string;
-
-
 }
