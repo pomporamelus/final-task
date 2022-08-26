@@ -17,7 +17,7 @@ export class AuthService {
     private jwtService: JwtService,
   ) {}
   async login(dto: loginUserDto) {
-    const user = await this.userService.getUser({name: dto.phone});
+    const user = await this.userService.getUser({phone: dto.phone});
     const passwordEqual = await bcrypt.compare(dto.password, user.password);
     if (user && passwordEqual) {
       console.log(user);
